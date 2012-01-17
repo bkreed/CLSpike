@@ -8,9 +8,12 @@ of background notifications to me is seeing if I can talk to the network from th
 
 To use Loggly, you'll have to create a file called:
 
-```CLSpike/Loggly_API_Key.h```
+```
+CLSpike/Loggly_API_Key.h
+```
 
 Which contains:
+
 ```
 #define kLOGGLY_API_KEY @"YOUR-GUID-GOES-HERE"
 ```
