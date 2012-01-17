@@ -1,0 +1,10 @@
+.DS_Store
+build/
+*.mode1v3
+#*.pbxuser
+*.swp
+*.xcuserdatad/
+*.xcuserdatad/
+xcuserdata/
+.idea/
+CLSpike/Loggly_API_Key.h

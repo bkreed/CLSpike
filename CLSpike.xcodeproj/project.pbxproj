@@ -1,0 +1,355 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3E097E514BF5F5F0088D67F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E414BF5F5F0088D67F /* UIKit.framework */; };
+		D3E097E714BF5F5F0088D67F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E614BF5F5F0088D67F /* Foundation.framework */; };
+		D3E097E914BF5F5F0088D67F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E814BF5F5F0088D67F /* CoreGraphics.framework */; };
+		D3E097EF14BF5F5F0088D67F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3E097ED14BF5F5F0088D67F /* InfoPlist.strings */; };
+		D3E097F114BF5F5F0088D67F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E097F014BF5F5F0088D67F /* main.m */; };
+		D3E097F514BF5F5F0088D67F /* CLSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E097F414BF5F5F0088D67F /* CLSAppDelegate.m */; };
+		D3E097F814BF5F5F0088D67F /* CLSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E097F714BF5F5F0088D67F /* CLSMainViewController.m */; };
+		D3E097FB14BF5F5F0088D67F /* CLSFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E097FA14BF5F5F0088D67F /* CLSFlipsideViewController.m */; };
+		D3E097FE14BF5F5F0088D67F /* CLSMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E097FC14BF5F5F0088D67F /* CLSMainViewController.xib */; };
+		D3E0980114BF5F5F0088D67F /* CLSFlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E097FF14BF5F5F0088D67F /* CLSFlipsideViewController.xib */; };
+		D3E0987414C008F00088D67F /* JucheLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E0986D14C008F00088D67F /* JucheLog.m */; };
+		D3E0987514C008F00088D67F /* Loggly.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E0986F14C008F00088D67F /* Loggly.m */; };
+		D3E0987614C008F00088D67F /* NSLogBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E0987114C008F00088D67F /* NSLogBackend.m */; };
+		D3E0987714C008F00088D67F /* UnifiedQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E0987314C008F00088D67F /* UnifiedQueue.m */; };
+		D3E098B914C4D5130088D67F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E098B814C4D5130088D67F /* CoreLocation.framework */; };
+		D3E098BB14C4D6FD0088D67F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E098BA14C4D6FD0088D67F /* Icon@2x.png */; };
+		D3E098BD14C4D7010088D67F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E098BC14C4D7000088D67F /* Icon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D3E097E014BF5F5F0088D67F /* CLSpike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLSpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E097E414BF5F5F0088D67F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D3E097E614BF5F5F0088D67F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D3E097E814BF5F5F0088D67F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D3E097EC14BF5F5F0088D67F /* CLSpike-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CLSpike-Info.plist"; sourceTree = "<group>"; };
+		D3E097EE14BF5F5F0088D67F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D3E097F014BF5F5F0088D67F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D3E097F214BF5F5F0088D67F /* CLSpike-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLSpike-Prefix.pch"; sourceTree = "<group>"; };
+		D3E097F314BF5F5F0088D67F /* CLSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLSAppDelegate.h; sourceTree = "<group>"; };
+		D3E097F414BF5F5F0088D67F /* CLSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLSAppDelegate.m; sourceTree = "<group>"; };
+		D3E097F614BF5F5F0088D67F /* CLSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLSMainViewController.h; sourceTree = "<group>"; };
+		D3E097F714BF5F5F0088D67F /* CLSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLSMainViewController.m; sourceTree = "<group>"; };
+		D3E097F914BF5F5F0088D67F /* CLSFlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLSFlipsideViewController.h; sourceTree = "<group>"; };
+		D3E097FA14BF5F5F0088D67F /* CLSFlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLSFlipsideViewController.m; sourceTree = "<group>"; };
+		D3E097FD14BF5F5F0088D67F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLSMainViewController.xib; sourceTree = "<group>"; };
+		D3E0980014BF5F5F0088D67F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLSFlipsideViewController.xib; sourceTree = "<group>"; };
+		D3E0986B14C008F00088D67F /* JucheBackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JucheBackend.h; path = externals/JucheLog/JucheLog/JucheBackend.h; sourceTree = "<group>"; };
+		D3E0986C14C008F00088D67F /* JucheLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JucheLog.h; path = externals/JucheLog/JucheLog/JucheLog.h; sourceTree = "<group>"; };
+		D3E0986D14C008F00088D67F /* JucheLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JucheLog.m; path = externals/JucheLog/JucheLog/JucheLog.m; sourceTree = "<group>"; };
+		D3E0986E14C008F00088D67F /* Loggly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Loggly.h; path = externals/JucheLog/JucheLog/Loggly.h; sourceTree = "<group>"; };
+		D3E0986F14C008F00088D67F /* Loggly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Loggly.m; path = externals/JucheLog/JucheLog/Loggly.m; sourceTree = "<group>"; };
+		D3E0987014C008F00088D67F /* NSLogBackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSLogBackend.h; path = externals/JucheLog/JucheLog/NSLogBackend.h; sourceTree = "<group>"; };
+		D3E0987114C008F00088D67F /* NSLogBackend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSLogBackend.m; path = externals/JucheLog/JucheLog/NSLogBackend.m; sourceTree = "<group>"; };
+		D3E0987214C008F00088D67F /* UnifiedQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnifiedQueue.h; path = externals/JucheLog/JucheLog/UnifiedQueue.h; sourceTree = "<group>"; };
+		D3E0987314C008F00088D67F /* UnifiedQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnifiedQueue.m; path = externals/JucheLog/JucheLog/UnifiedQueue.m; sourceTree = "<group>"; };
+		D3E098B814C4D5130088D67F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D3E098BA14C4D6FD0088D67F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D3E098BC14C4D7000088D67F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		D3E098C614C63A160088D67F /* Loggly_API_Key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Loggly_API_Key.h; path = CLSpike/Loggly_API_Key.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3E097DD14BF5F5F0088D67F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E098B914C4D5130088D67F /* CoreLocation.framework in Frameworks */,
+				D3E097E514BF5F5F0088D67F /* UIKit.framework in Frameworks */,
+				D3E097E714BF5F5F0088D67F /* Foundation.framework in Frameworks */,
+				D3E097E914BF5F5F0088D67F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D3E097D514BF5F5F0088D67F = {
+			isa = PBXGroup;
+			children = (
+				D3E098C614C63A160088D67F /* Loggly_API_Key.h */,
+				D3E098BC14C4D7000088D67F /* Icon.png */,
+				D3E098BA14C4D6FD0088D67F /* Icon@2x.png */,
+				D3E097EA14BF5F5F0088D67F /* CLSpike */,
+				D3E0986814C008B80088D67F /* Externals */,
+				D3E097E314BF5F5F0088D67F /* Frameworks */,
+				D3E097E114BF5F5F0088D67F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3E097E114BF5F5F0088D67F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3E097E014BF5F5F0088D67F /* CLSpike.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3E097E314BF5F5F0088D67F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3E098B814C4D5130088D67F /* CoreLocation.framework */,
+				D3E097E414BF5F5F0088D67F /* UIKit.framework */,
+				D3E097E614BF5F5F0088D67F /* Foundation.framework */,
+				D3E097E814BF5F5F0088D67F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3E097EA14BF5F5F0088D67F /* CLSpike */ = {
+			isa = PBXGroup;
+			children = (
+				D3E097F314BF5F5F0088D67F /* CLSAppDelegate.h */,
+				D3E097F414BF5F5F0088D67F /* CLSAppDelegate.m */,
+				D3E097F614BF5F5F0088D67F /* CLSMainViewController.h */,
+				D3E097F714BF5F5F0088D67F /* CLSMainViewController.m */,
+				D3E097F914BF5F5F0088D67F /* CLSFlipsideViewController.h */,
+				D3E097FA14BF5F5F0088D67F /* CLSFlipsideViewController.m */,
+				D3E097FC14BF5F5F0088D67F /* CLSMainViewController.xib */,
+				D3E097FF14BF5F5F0088D67F /* CLSFlipsideViewController.xib */,
+				D3E097EB14BF5F5F0088D67F /* Supporting Files */,
+			);
+			path = CLSpike;
+			sourceTree = "<group>";
+		};
+		D3E097EB14BF5F5F0088D67F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3E097EC14BF5F5F0088D67F /* CLSpike-Info.plist */,
+				D3E097ED14BF5F5F0088D67F /* InfoPlist.strings */,
+				D3E097F014BF5F5F0088D67F /* main.m */,
+				D3E097F214BF5F5F0088D67F /* CLSpike-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3E0986814C008B80088D67F /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0986A14C008C10088D67F /* JucheLog */,
+			);
+			name = Externals;
+			sourceTree = "<group>";
+		};
+		D3E0986A14C008C10088D67F /* JucheLog */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0986B14C008F00088D67F /* JucheBackend.h */,
+				D3E0986C14C008F00088D67F /* JucheLog.h */,
+				D3E0986D14C008F00088D67F /* JucheLog.m */,
+				D3E0986E14C008F00088D67F /* Loggly.h */,
+				D3E0986F14C008F00088D67F /* Loggly.m */,
+				D3E0987014C008F00088D67F /* NSLogBackend.h */,
+				D3E0987114C008F00088D67F /* NSLogBackend.m */,
+				D3E0987214C008F00088D67F /* UnifiedQueue.h */,
+				D3E0987314C008F00088D67F /* UnifiedQueue.m */,
+			);
+			name = JucheLog;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3E097DF14BF5F5F0088D67F /* CLSpike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E0980414BF5F5F0088D67F /* Build configuration list for PBXNativeTarget "CLSpike" */;
+			buildPhases = (
+				D3E097DC14BF5F5F0088D67F /* Sources */,
+				D3E097DD14BF5F5F0088D67F /* Frameworks */,
+				D3E097DE14BF5F5F0088D67F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLSpike;
+			productName = CLSpike;
+			productReference = D3E097E014BF5F5F0088D67F /* CLSpike.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3E097D714BF5F5F0088D67F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "PDAgent, LLC";
+			};
+			buildConfigurationList = D3E097DA14BF5F5F0088D67F /* Build configuration list for PBXProject "CLSpike" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D3E097D514BF5F5F0088D67F;
+			productRefGroup = D3E097E114BF5F5F0088D67F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3E097DF14BF5F5F0088D67F /* CLSpike */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3E097DE14BF5F5F0088D67F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E097EF14BF5F5F0088D67F /* InfoPlist.strings in Resources */,
+				D3E097FE14BF5F5F0088D67F /* CLSMainViewController.xib in Resources */,
+				D3E0980114BF5F5F0088D67F /* CLSFlipsideViewController.xib in Resources */,
+				D3E098BB14C4D6FD0088D67F /* Icon@2x.png in Resources */,
+				D3E098BD14C4D7010088D67F /* Icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3E097DC14BF5F5F0088D67F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E097F114BF5F5F0088D67F /* main.m in Sources */,
+				D3E097F514BF5F5F0088D67F /* CLSAppDelegate.m in Sources */,
+				D3E097F814BF5F5F0088D67F /* CLSMainViewController.m in Sources */,
+				D3E097FB14BF5F5F0088D67F /* CLSFlipsideViewController.m in Sources */,
+				D3E0987414C008F00088D67F /* JucheLog.m in Sources */,
+				D3E0987514C008F00088D67F /* Loggly.m in Sources */,
+				D3E0987614C008F00088D67F /* NSLogBackend.m in Sources */,
+				D3E0987714C008F00088D67F /* UnifiedQueue.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D3E097ED14BF5F5F0088D67F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E097EE14BF5F5F0088D67F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D3E097FC14BF5F5F0088D67F /* CLSMainViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E097FD14BF5F5F0088D67F /* en */,
+			);
+			name = CLSMainViewController.xib;
+			sourceTree = "<group>";
+		};
+		D3E097FF14BF5F5F0088D67F /* CLSFlipsideViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E0980014BF5F5F0088D67F /* en */,
+			);
+			name = CLSFlipsideViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3E0980214BF5F5F0088D67F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D3E0980314BF5F5F0088D67F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3E0980514BF5F5F0088D67F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CLSpike/CLSpike-Prefix.pch";
+				INFOPLIST_FILE = "CLSpike/CLSpike-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D3E0980614BF5F5F0088D67F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CLSpike/CLSpike-Prefix.pch";
+				INFOPLIST_FILE = "CLSpike/CLSpike-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3E097DA14BF5F5F0088D67F /* Build configuration list for PBXProject "CLSpike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E0980214BF5F5F0088D67F /* Debug */,
+				D3E0980314BF5F5F0088D67F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3E0980414BF5F5F0088D67F /* Build configuration list for PBXNativeTarget "CLSpike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E0980514BF5F5F0088D67F /* Debug */,
+				D3E0980614BF5F5F0088D67F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3E097D714BF5F5F0088D67F /* Project object */;
+}
