@@ -79,7 +79,8 @@
 
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
     
-    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
+    NSTimeInterval secondsSinceEpoch=[[NSDate date] timeIntervalSince1970];
+    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",secondsSinceEpoch] ,@"timestamp", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     if ([CLLocationManager locationServicesEnabled]) {
         JUCHE_LOG_DICT(JINFO, tempDict, @"Successfully registered for location services"); 
@@ -163,7 +164,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSLog(@"locationManager didUpdateToLocation:%@",newLocation);
-    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
+    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     if (oldLocation) {
         JUCHE_LOG_DICT(JINFO, tempDict,@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
@@ -179,7 +180,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region  {
 	NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
-    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
+    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     JUCHE_LOG_DICT(JINFO, tempDict,@"didEnterRegion: %@", event);
 
@@ -188,7 +189,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
 	NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
-    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
+    NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     JUCHE_LOG_DICT(JINFO, tempDict,@"didExitRegion: %@", event);
     [UIApplication sharedApplication].applicationIconBadgeNumber++;
@@ -214,7 +215,7 @@
 																	  radius:100.0 
 																  identifier:[NSString stringWithFormat:@"%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude]];
         
-        NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
+        NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 		
         JUCHE_LOG_DICT(JINFO, tempDict,@"addedRegion: %@", [NSString stringWithFormat:@"%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude]);
 		// Start monitoring the newly created region.
