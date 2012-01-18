@@ -75,7 +75,7 @@
 		JUCHE(JERROR,@"Significant location change monitoring is not available.");
 	}
     
-    [self.locationManager startUpdatingLocation];
+    [self.locationManager performSelectorOnMainThread:@selector(startUpdatingLocation) withObject:nil waitUntilDone:YES];
 
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
     
