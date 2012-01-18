@@ -38,24 +38,28 @@
     [Loggly enableWithInputKey:kLOGGLY_API_KEY];
 #endif
     
-    [self performSelectorInBackground:@selector(performLaunchLogging) withObject:nil];
-    [self performSelectorInBackground:@selector(performLaunchSetup) withObject:nil];
-    return YES;
-}
-
--(void) performLaunchLogging {
-    NSDictionary *tempDict=[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date],@"timestamp", nil];
-    JUCHE_LOG_DICT(JINFO, tempDict, @"Application Launched!");
-
-}
-
--(void) performLaunchSetup {    
     self.locationManager = [[CLLocationManager alloc] init];
 	self.locationManager.delegate = self;
 	self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
 	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [self.locationManager startUpdatingLocation];
+
+    [self performSelectorInBackground:@selector(performLaunchLogging) withObject:nil];
+    [self performSelectorInBackground:@selector(performLaunchSetup) withObject:nil];
+    return YES;
+}
+
+-(void) performLaunchLogging {
+    NSLog(@"starting performLaunchLogging");
+    NSDictionary *tempDict=[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date],@"timestamp", nil];
+    JUCHE_LOG_DICT(JINFO, tempDict, @"Application Launched!");
+    NSLog(@"ending performLaunchLogging");
+
+}
+
+-(void) performLaunchSetup { 
+    NSLog(@"starting performLaunchSetup");
     
     if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
         // Get all regions being monitored for this application.
@@ -82,6 +86,7 @@
     } else {
         JUCHE_LOG_DICT(JERROR, tempDict, @"Could not register for location services"); 
     }
+    NSLog(@"ending performLaunchSetup");
 
 
 }
@@ -150,11 +155,14 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"locationManager didFailWithError:%@",error.description);
+
 	JUCHE(JERROR,@"didFailWithError: %@", [error description]);
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"locationManager didUpdateToLocation:%@",newLocation);
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     if (oldLocation) {
