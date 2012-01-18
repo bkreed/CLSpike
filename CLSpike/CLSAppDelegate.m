@@ -43,8 +43,6 @@
 	self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
 	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    [self.locationManager startUpdatingLocation];
-
     [self performSelectorInBackground:@selector(performLaunchLogging) withObject:nil];
     [self performSelectorInBackground:@selector(performLaunchSetup) withObject:nil];
     return YES;
@@ -77,6 +75,8 @@
 		JUCHE(JERROR,@"Significant location change monitoring is not available.");
 	}
     
+    [self.locationManager startUpdatingLocation];
+
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
     
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%Lf",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
