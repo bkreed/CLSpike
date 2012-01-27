@@ -309,6 +309,10 @@
 		D3E0980514BF5F5F0088D67F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CLSpike/CLSpike-Prefix.pch";
 				INFOPLIST_FILE = "CLSpike/CLSpike-Info.plist";
@@ -321,6 +325,10 @@
 		D3E0980614BF5F5F0088D67F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CLSpike/CLSpike-Prefix.pch";
 				INFOPLIST_FILE = "CLSpike/CLSpike-Info.plist";

@@ -49,14 +49,19 @@
 }
 
 -(void) performLaunchLogging {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
     NSLog(@"starting performLaunchLogging");
     NSDictionary *tempDict=[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date],@"timestamp", nil];
     JUCHE_LOG_DICT(JINFO, tempDict, @"Application Launched!");
     NSLog(@"ending performLaunchLogging");
 
+    [pool drain];
 }
 
 -(void) performLaunchSetup { 
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
     NSLog(@"starting performLaunchSetup");
     
     if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
@@ -89,6 +94,7 @@
     }
     NSLog(@"ending performLaunchSetup");
 
+    [pool drain];
 
 }
 
@@ -156,13 +162,20 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
     NSLog(@"locationManager didFailWithError:%@",error.description);
 
 	JUCHE(JERROR,@"didFailWithError: %@", [error description]);
+    
+    [pool drain];
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
     NSLog(@"locationManager didUpdateToLocation:%@",newLocation);
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",newLocation.coordinate.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
@@ -175,19 +188,27 @@
 
     [self addRegionAroundLocation:newLocation];
     [self.locationManager stopUpdatingLocation];
+    [pool drain];
+
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region  {
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
 	NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     JUCHE_LOG_DICT(JINFO, tempDict,@"didEnterRegion: %@", event);
+    [pool drain];
 
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
 	NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
@@ -196,17 +217,25 @@
 
     [self.locationManager startUpdatingLocation];
     [self.locationManager stopMonitoringForRegion:region];
+    [pool drain];
+
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
 	NSString *event = [NSString stringWithFormat:@"monitoringDidFailForRegion %@: %@", region.identifier, error];
     JUCHE(JERROR,@"monitoringDidFailForRegion: %@", event);
+    [pool drain];
+
 
 }
 
 
 - (IBAction)addRegionAroundLocation:(CLLocation *)newLocation {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
     [UIApplication sharedApplication].applicationIconBadgeNumber++;
 
 	if ([CLLocationManager regionMonitoringAvailable]) {
@@ -226,6 +255,8 @@
 	else {
 		NSLog(@"Region monitoring is not available.");
 	}
+    [pool drain];
+
 }
 
 
