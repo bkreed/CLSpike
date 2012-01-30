@@ -10,9 +10,13 @@
 
 #import "CLSMainViewController.h"
 
+#import "CoreData+MagicalRecord.h"
+
 #include "JucheLog.h"
 #import "Loggly.h"
 #import "Loggly_API_Key.h"
+
+#import "Location.h"
 
 @implementation CLSAppDelegate
 
@@ -45,6 +49,7 @@
     
     [self performSelectorInBackground:@selector(performLaunchLogging) withObject:nil];
     [self performSelectorInBackground:@selector(performLaunchSetup) withObject:nil];
+    [MagicalRecordHelpers setupAutoMigratingCoreDataStack];
     return YES;
 }
 
@@ -157,6 +162,7 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    [MagicalRecordHelpers cleanUp];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -188,6 +194,16 @@
 
     [self addRegionAroundLocation:newLocation];
     [self.locationManager stopUpdatingLocation];
+    Location *newLocationObject = [Location createEntity];
+    [newLocationObject setLatitude:[NSNumber numberWithDouble:newLocation.coordinate.latitude]];
+    [newLocationObject setLongitude:[NSNumber numberWithDouble:newLocation.coordinate.longitude]];
+    [newLocationObject setTimestamp:[NSDate date]];
+    [newLocationObject setBattery_status:[NSNumber numberWithFloat:[[UIDevice currentDevice] batteryLevel]]];
+    NSError *error=nil;
+    if (![[NSManagedObjectContext context] save:&error]) {
+        NSLog(@"Error saving: %@",[error description]);
+    }
+
     [pool drain];
 
 }

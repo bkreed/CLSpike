@@ -1,3 +1,6 @@
 [submodule "externals/JucheLog"]
 	path = externals/JucheLog
 	url = git://github.com/carlbrown/JucheLog.git
+[submodule "externals/MagicalRecord"]
+	path = externals/MagicalRecord
+	url = git://github.com/magicalpanda/MagicalRecord.git
