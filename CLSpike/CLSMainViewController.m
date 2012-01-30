@@ -8,9 +8,12 @@
 
 #import "CLSMainViewController.h"
 #import "Location.h"
+#import "ARController.h"
+#import "ARGeoCoordinate.h"
 
 @implementation CLSMainViewController
 
+@synthesize arController = _arController;
 
 - (void)didReceiveMemoryWarning
 {
@@ -74,8 +77,37 @@
     [self presentModalViewController:controller animated:YES];
 }
 
+- (IBAction)startAR:(id)sender {
+    self.arController = [[ARController alloc] initWithViewController:self];
+        
+    for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
+        ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:[[[CLLocation alloc] initWithLatitude:[loc.latitude doubleValue] longitude:[loc.longitude doubleValue]] autorelease] andTitle:[NSString stringWithFormat:@"%@",loc.timestamp]];
 
+        [self.arController addCoordinate:tempCoordinate animated:NO];
+        [tempCoordinate release];
 
+    }
+    
+	[self.arController presentModalARControllerAnimated:NO];
+
+    UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+    
+    [closeBtn setTitle:@"Close" forState:UIControlStateNormal];
+    
+    [closeBtn setBackgroundColor:[UIColor greenColor]];
+    [closeBtn addTarget:self action:@selector(closeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:closeBtn];
+    
+    [closeBtn release];
+
+}
+
+- (IBAction) closeButtonClicked: (id) sender {
+    [self.arController dismissModalARControllerAnimated:NO];
+    [(UIButton *) sender removeFromSuperview];
+    [self setArController:nil];
+}
+  
 - (void)dealloc {
     [super dealloc];
 }

@@ -23,6 +23,11 @@
 		D312952614D7132C0096BE31 /* NSObject+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = D312951E14D7132C0096BE31 /* NSObject+MagicalDataImport.m */; };
 		D312952714D7132C0096BE31 /* NSRelationshipDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = D312952014D7132C0096BE31 /* NSRelationshipDescription+MagicalDataImport.m */; };
 		D312952814D7132C0096BE31 /* NSString+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = D312952214D7132C0096BE31 /* NSString+MagicalDataImport.m */; };
+		D312957214D738BA0096BE31 /* ARController.m in Sources */ = {isa = PBXBuildFile; fileRef = D312956B14D738BA0096BE31 /* ARController.m */; };
+		D312957314D738BA0096BE31 /* ARCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = D312956D14D738BA0096BE31 /* ARCoordinate.m */; };
+		D312957414D738BA0096BE31 /* ARGeoCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = D312956F14D738BA0096BE31 /* ARGeoCoordinate.m */; };
+		D312957514D738BA0096BE31 /* ARMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D312957114D738BA0096BE31 /* ARMarker.m */; };
+		D312957814D739D30096BE31 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = D312957714D739D30096BE31 /* point.png */; };
 		D3B0572214D702A1004A1FD4 /* LocationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3B0572014D702A1004A1FD4 /* LocationModel.xcdatamodeld */; };
 		D3E097E514BF5F5F0088D67F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E414BF5F5F0088D67F /* UIKit.framework */; };
 		D3E097E714BF5F5F0088D67F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E614BF5F5F0088D67F /* Foundation.framework */; };
@@ -77,6 +82,15 @@
 		D312952014D7132C0096BE31 /* NSRelationshipDescription+MagicalDataImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSRelationshipDescription+MagicalDataImport.m"; path = "externals/MagicalRecord/Source/Categories/DataImport/NSRelationshipDescription+MagicalDataImport.m"; sourceTree = "<group>"; };
 		D312952114D7132C0096BE31 /* NSString+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MagicalDataImport.h"; path = "externals/MagicalRecord/Source/Categories/DataImport/NSString+MagicalDataImport.h"; sourceTree = "<group>"; };
 		D312952214D7132C0096BE31 /* NSString+MagicalDataImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MagicalDataImport.m"; path = "externals/MagicalRecord/Source/Categories/DataImport/NSString+MagicalDataImport.m"; sourceTree = "<group>"; };
+		D312956A14D738BA0096BE31 /* ARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARController.h; path = externals/ARToolkit/ARController.h; sourceTree = "<group>"; };
+		D312956B14D738BA0096BE31 /* ARController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARController.m; path = externals/ARToolkit/ARController.m; sourceTree = "<group>"; };
+		D312956C14D738BA0096BE31 /* ARCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARCoordinate.h; path = externals/ARToolkit/ARCoordinate.h; sourceTree = "<group>"; };
+		D312956D14D738BA0096BE31 /* ARCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARCoordinate.m; path = externals/ARToolkit/ARCoordinate.m; sourceTree = "<group>"; };
+		D312956E14D738BA0096BE31 /* ARGeoCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARGeoCoordinate.h; path = externals/ARToolkit/ARGeoCoordinate.h; sourceTree = "<group>"; };
+		D312956F14D738BA0096BE31 /* ARGeoCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARGeoCoordinate.m; path = externals/ARToolkit/ARGeoCoordinate.m; sourceTree = "<group>"; };
+		D312957014D738BA0096BE31 /* ARMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARMarker.h; path = externals/ARToolkit/ARMarker.h; sourceTree = "<group>"; };
+		D312957114D738BA0096BE31 /* ARMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARMarker.m; path = externals/ARToolkit/ARMarker.m; sourceTree = "<group>"; };
+		D312957714D739D30096BE31 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = point.png; path = Artwork/point.png; sourceTree = SOURCE_ROOT; };
 		D3B0572114D702A1004A1FD4 /* LocationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationModel.xcdatamodel; sourceTree = "<group>"; };
 		D3E097E014BF5F5F0088D67F /* CLSpike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLSpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E097E414BF5F5F0088D67F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -162,6 +176,30 @@
 			name = MagicalRecord;
 			sourceTree = "<group>";
 		};
+		D312956914D738800096BE31 /* ARToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				D312956A14D738BA0096BE31 /* ARController.h */,
+				D312956B14D738BA0096BE31 /* ARController.m */,
+				D312956C14D738BA0096BE31 /* ARCoordinate.h */,
+				D312956D14D738BA0096BE31 /* ARCoordinate.m */,
+				D312956E14D738BA0096BE31 /* ARGeoCoordinate.h */,
+				D312956F14D738BA0096BE31 /* ARGeoCoordinate.m */,
+				D312957014D738BA0096BE31 /* ARMarker.h */,
+				D312957114D738BA0096BE31 /* ARMarker.m */,
+			);
+			name = ARToolkit;
+			sourceTree = "<group>";
+		};
+		D312957614D739970096BE31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D312957714D739D30096BE31 /* point.png */,
+			);
+			name = Resources;
+			path = CLSpike;
+			sourceTree = "<group>";
+		};
 		D3E097D514BF5F5F0088D67F = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +207,8 @@
 				D3E098BC14C4D7000088D67F /* Icon.png */,
 				D3E098BA14C4D6FD0088D67F /* Icon@2x.png */,
 				D3E097EA14BF5F5F0088D67F /* CLSpike */,
+				D3E097EB14BF5F5F0088D67F /* Supporting Files */,
+				D312957614D739970096BE31 /* Resources */,
 				D3E0986814C008B80088D67F /* Externals */,
 				D3E097E314BF5F5F0088D67F /* Frameworks */,
 				D3E097E114BF5F5F0088D67F /* Products */,
@@ -206,7 +246,6 @@
 				D3E097FA14BF5F5F0088D67F /* CLSFlipsideViewController.m */,
 				D3E097FC14BF5F5F0088D67F /* CLSMainViewController.xib */,
 				D3E097FF14BF5F5F0088D67F /* CLSFlipsideViewController.xib */,
-				D3E097EB14BF5F5F0088D67F /* Supporting Files */,
 				D3B0572014D702A1004A1FD4 /* LocationModel.xcdatamodeld */,
 				D312946614D7055F0096BE31 /* Location.h */,
 				D312946714D7055F0096BE31 /* Location.m */,
@@ -223,11 +262,13 @@
 				D3E097F214BF5F5F0088D67F /* CLSpike-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = CLSpike;
 			sourceTree = "<group>";
 		};
 		D3E0986814C008B80088D67F /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				D312956914D738800096BE31 /* ARToolkit */,
 				D31294FC14D712C10096BE31 /* MagicalRecord */,
 				D3E0986A14C008C10088D67F /* JucheLog */,
 			);
@@ -306,6 +347,7 @@
 				D3E0980114BF5F5F0088D67F /* CLSFlipsideViewController.xib in Resources */,
 				D3E098BB14C4D6FD0088D67F /* Icon@2x.png in Resources */,
 				D3E098BD14C4D7010088D67F /* Icon.png in Resources */,
+				D312957814D739D30096BE31 /* point.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +382,10 @@
 				D312952614D7132C0096BE31 /* NSObject+MagicalDataImport.m in Sources */,
 				D312952714D7132C0096BE31 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				D312952814D7132C0096BE31 /* NSString+MagicalDataImport.m in Sources */,
+				D312957214D738BA0096BE31 /* ARController.m in Sources */,
+				D312957314D738BA0096BE31 /* ARCoordinate.m in Sources */,
+				D312957414D738BA0096BE31 /* ARGeoCoordinate.m in Sources */,
+				D312957514D738BA0096BE31 /* ARMarker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
