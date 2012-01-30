@@ -8,8 +8,12 @@
 
 #import "CLSFlipsideViewController.h"
 
-@interface CLSMainViewController : UIViewController <CLSFlipsideViewControllerDelegate>
+@interface CLSMainViewController : UIViewController <CLSFlipsideViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@property (retain, nonatomic) IBOutlet 
+    UITableView *tableView;
+@property (retain, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 - (IBAction)showInfo:(id)sender;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end

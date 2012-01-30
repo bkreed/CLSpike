@@ -194,13 +194,13 @@
 
     [self addRegionAroundLocation:newLocation];
     [self.locationManager stopUpdatingLocation];
-    Location *newLocationObject = [Location createEntity];
+    Location *newLocationObject = [Location createInContext:[NSManagedObjectContext contextForCurrentThread]];
     [newLocationObject setLatitude:[NSNumber numberWithDouble:newLocation.coordinate.latitude]];
     [newLocationObject setLongitude:[NSNumber numberWithDouble:newLocation.coordinate.longitude]];
     [newLocationObject setTimestamp:[NSDate date]];
     [newLocationObject setBattery_status:[NSNumber numberWithFloat:[[UIDevice currentDevice] batteryLevel]]];
     NSError *error=nil;
-    if (![[NSManagedObjectContext context] save:&error]) {
+    if (![[NSManagedObjectContext contextForCurrentThread] save:&error]) {
         NSLog(@"Error saving: %@",[error description]);
     }
 
