@@ -80,7 +80,10 @@
 - (IBAction)startAR:(id)sender {
     self.arController = [[ARController alloc] initWithViewController:self];
         
-    for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
+    //for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
+    NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
+    [locFetcher setFetchLimit:5];
+    for (Location *loc in [Location executeFetchRequest:locFetcher]) {
         ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:[[[CLLocation alloc] initWithLatitude:[loc.latitude doubleValue] longitude:[loc.longitude doubleValue]] autorelease] andTitle:[NSString stringWithFormat:@"%@",loc.timestamp]];
 
         [self.arController addCoordinate:tempCoordinate animated:NO];
