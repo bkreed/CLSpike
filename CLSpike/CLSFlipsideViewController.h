@@ -14,9 +14,13 @@
 - (void)flipsideViewControllerDidFinish:(CLSFlipsideViewController *)controller;
 @end
 
-@interface CLSFlipsideViewController : UIViewController
+@interface CLSFlipsideViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) IBOutlet id <CLSFlipsideViewControllerDelegate> delegate;
+@property (retain, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 - (IBAction)done:(id)sender;
 
