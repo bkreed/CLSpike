@@ -32,51 +32,54 @@
 
 - (id)initWithViewController:(UIViewController *)theView {
 
-	coordinates	= [[NSMutableArray alloc] init];
-	
-	// Initialise the root and overlay views
-	self.rootController = theView;
-	CGRect screenBounds = [[UIScreen mainScreen] bounds];
-	self.overlayView = [[UIView alloc] initWithFrame: screenBounds];
-	
-	// Debugging, removes camera view
-	//self.overlayView.backgroundColor = [UIColor blackColor];
-	
-	self.currentOrientation = UIDeviceOrientationPortrait;
-	self.viewRange = self.overlayView.bounds.size.width / 12;
-    self.originalView = self.rootController.view;
-	self.rootController.view = overlayView;
-	
-	// Initialise the UIImagePickerController
-	self.pickerController = [[[UIImagePickerController alloc] init] autorelease];
-	self.pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-	self.pickerController.cameraViewTransform = CGAffineTransformScale( self.pickerController.cameraViewTransform, 1.13f,  1.13f);
-	
-	self.pickerController.showsCameraControls = NO;
-	self.pickerController.navigationBarHidden = YES;
-	self.pickerController.cameraOverlayView = overlayView;
-	
-	// Initialise the CLLocationManager
-	self.locationManager = [[CLLocationManager alloc] init];
-	self.locationManager.headingFilter = kCLHeadingFilterNone;
-	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-	self.locationManager.delegate = self;
-	[self.locationManager startUpdatingHeading];
-	[self.locationManager startUpdatingLocation];
-	
-	self.currentLocation = [[CLLocation alloc] initWithLatitude:30.26786273 longitude:-97.74078169];	 
-	 
-	// Initalise the UIAccelerometer
-	self.accelerometer = [UIAccelerometer sharedAccelerometer];
-	self.accelerometer.updateInterval = 0.25;
-	self.accelerometer.delegate = self;
-	
-	// Listen for changes in device orientation
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object:nil];
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];	
-	
-	// Initialise the central ARCoordiante
-	self.currentCoordinate = [[ARCoordinate alloc] initWithRadialDistance:1.0 andInclination:0 andAzimuth:0];
+    if (self = [super init]) {
+
+        coordinates	= [[NSMutableArray alloc] init];
+        
+        // Initialise the root and overlay views
+        self.rootController = theView;
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        self.overlayView = [[[UIView alloc] initWithFrame: screenBounds] autorelease];
+        
+        // Debugging, removes camera view
+        //self.overlayView.backgroundColor = [UIColor blackColor];
+        
+        self.currentOrientation = UIDeviceOrientationPortrait;
+        self.viewRange = self.overlayView.bounds.size.width / 12;
+        self.originalView = self.rootController.view;
+        self.rootController.view = overlayView;
+        
+        // Initialise the UIImagePickerController
+        self.pickerController = [[[UIImagePickerController alloc] init] autorelease];
+        self.pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.pickerController.cameraViewTransform = CGAffineTransformScale( self.pickerController.cameraViewTransform, 1.13f,  1.13f);
+        
+        self.pickerController.showsCameraControls = NO;
+        self.pickerController.navigationBarHidden = YES;
+        self.pickerController.cameraOverlayView = overlayView;
+        
+        // Initialise the CLLocationManager
+        self.locationManager = [[[CLLocationManager alloc] init] autorelease];
+        self.locationManager.headingFilter = kCLHeadingFilterNone;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.delegate = self;
+        [self.locationManager startUpdatingHeading];
+        [self.locationManager startUpdatingLocation];
+        
+        self.currentLocation = [[[CLLocation alloc] initWithLatitude:30.26786273 longitude:-97.74078169] autorelease];	 
+         
+        // Initalise the UIAccelerometer
+        self.accelerometer = [UIAccelerometer sharedAccelerometer];
+        self.accelerometer.updateInterval = 0.25;
+        self.accelerometer.delegate = self;
+        
+        // Listen for changes in device orientation
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object:nil];
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];	
+        
+        // Initialise the central ARCoordiante
+        self.currentCoordinate = [[[ARCoordinate alloc] initWithRadialDistance:1.0 andInclination:0 andAzimuth:0] autorelease];
+    }
 	
 	return self;
 }

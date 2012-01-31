@@ -85,7 +85,7 @@
 }
 
 - (IBAction)startAR:(id)sender {
-    self.arController = [[ARController alloc] initWithViewController:self];
+    self.arController = [[[ARController alloc] initWithViewController:self] autorelease];
     
     CLSAppDelegate *appDelegate = (CLSAppDelegate *)[[UIApplication sharedApplication] delegate];
         

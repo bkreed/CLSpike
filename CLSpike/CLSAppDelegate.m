@@ -46,11 +46,15 @@
     [Loggly enableWithInputKey:kLOGGLY_API_KEY];
 #endif
     
-    self.locationManager = [[CLLocationManager alloc] init];
-	self.locationManager.delegate = self;
-	self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
-	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    CLLocationManager *cl = [[CLLocationManager alloc] init];
     
+	cl.delegate = self;
+	cl.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+	cl.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    [self setLocationManager:cl];
+    [cl release];
+
     [self performSelectorInBackground:@selector(performLaunchLogging) withObject:nil];
     [self performSelectorInBackground:@selector(performLaunchSetup) withObject:nil];
     [MagicalRecordHelpers setupAutoMigratingCoreDataStack];
