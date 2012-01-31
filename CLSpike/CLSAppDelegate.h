@@ -19,6 +19,11 @@
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
+@property (nonatomic, readonly) NSDateFormatter *dateFormatter;
+
+@property (nonatomic, retain) CLLocation *lastLocation;
+
+
 -(void) performLaunchSetup;
 -(void) performLaunchLogging;
 

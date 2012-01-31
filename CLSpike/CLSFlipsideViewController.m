@@ -7,6 +7,7 @@
 //
 
 #import "CLSFlipsideViewController.h"
+#import "CLSAppDelegate.h"
 #import "Location.h"
 
 @implementation CLSFlipsideViewController
@@ -254,7 +255,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Location *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *cellText = [NSString stringWithFormat:@"%@: %@/%@",location.timestamp, location.latitude, location.longitude];
+    NSString *cellText = [NSString stringWithFormat:@"%@: %+.8f/%+.8f",[[(CLSAppDelegate *)[[UIApplication sharedApplication] delegate] dateFormatter] stringFromDate:location.timestamp], location.latitude, location.longitude];
     
     UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
     CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
@@ -270,7 +271,7 @@
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
     Location *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@/%@",location.timestamp, location.latitude, location.longitude];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %+.8f/%+.8f",[[(CLSAppDelegate *)[[UIApplication sharedApplication] delegate] dateFormatter] stringFromDate:location.timestamp], location.latitude, location.longitude];
     
     
 }

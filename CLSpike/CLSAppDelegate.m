@@ -23,11 +23,15 @@
 @synthesize window = _window;
 @synthesize mainViewController = _mainViewController;
 @synthesize locationManager = _locationManager;
+@synthesize dateFormatter = _dateFormatter;
+@synthesize lastLocation = _lastLocation;
 
 - (void)dealloc
 {
     [_window release];
     [_mainViewController release];
+    [_locationManager release];
+    [_dateFormatter release];
     [super dealloc];
 }
 
@@ -68,6 +72,10 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
     NSLog(@"starting performLaunchSetup");
+    
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [self.dateFormatter setDateFormat:@"M/dd hh:mma"];
     
     if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
         // Get all regions being monitored for this application.
@@ -191,14 +199,20 @@
         JUCHE_LOG_DICT(JINFO, tempDict,@"didUpdateToLocation %@", newLocation);
     }
     [UIApplication sharedApplication].applicationIconBadgeNumber++;
+    self.lastLocation = newLocation;
 
     [self addRegionAroundLocation:newLocation];
     [self.locationManager stopUpdatingLocation];
     Location *newLocationObject = [Location createInContext:[NSManagedObjectContext contextForCurrentThread]];
-    [newLocationObject setLatitude:[NSNumber numberWithDouble:newLocation.coordinate.latitude]];
-    [newLocationObject setLongitude:[NSNumber numberWithDouble:newLocation.coordinate.longitude]];
+    [newLocationObject setLatitude:newLocation.coordinate.latitude];
+    [newLocationObject setLongitude:newLocation.coordinate.longitude];
     [newLocationObject setTimestamp:[NSDate date]];
-    [newLocationObject setBattery_status:[NSNumber numberWithFloat:[[UIDevice currentDevice] batteryLevel]]];
+    [newLocationObject setBattery_status:[[UIDevice currentDevice] batteryLevel]];
+    [newLocationObject setSpeed:newLocation.speed];
+    [newLocationObject setCourse:newLocation.course];
+    [newLocationObject setHorizontalAccuracy:newLocation.horizontalAccuracy];
+    [newLocationObject setVerticalAccuracy:newLocation.verticalAccuracy];
+    [newLocationObject setAltitude:newLocation.altitude];
     NSError *error=nil;
     if (![[NSManagedObjectContext contextForCurrentThread] save:&error]) {
         NSLog(@"Error saving: %@",[error description]);

@@ -15,5 +15,10 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic timestamp;
+@dynamic altitude;
+@dynamic course;
+@dynamic speed;
+@dynamic horizontalAccuracy;
+@dynamic verticalAccuracy;
 
 @end
