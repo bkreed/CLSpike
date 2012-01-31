@@ -55,7 +55,7 @@
     [super viewDidAppear:animated];    
     //for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
     NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
-    [locFetcher setFetchLimit:100];
+    [locFetcher setFetchLimit:50];
     for (Location *loc in [Location executeFetchRequest:locFetcher]) {
         CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
         [self.mapView addAnnotation:(id<MKAnnotation>) fetchedLocation];
@@ -269,8 +269,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CLSAppDelegate *appDelegate = (CLSAppDelegate *)[[UIApplication sharedApplication] delegate];
     Location *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *cellText = [NSString stringWithFormat:@"%@: %+.8f/%+.8f",[[(CLSAppDelegate *)[[UIApplication sharedApplication] delegate] dateFormatter] stringFromDate:location.timestamp], location.latitude, location.longitude];
+    NSString *cellText = [NSString stringWithFormat:@"%@: %+.8f/%+.8f (%.0fm/%0.f)",[appDelegate.dateFormatter stringFromDate:location.timestamp], location.latitude, location.longitude,[appDelegate.lastLocation distanceFromLocation:[[[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude] autorelease]],location.horizontalAccuracy];
     
     UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
     CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
@@ -280,13 +281,16 @@
 }
 
 
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    CLSAppDelegate *appDelegate = (CLSAppDelegate *)[[UIApplication sharedApplication] delegate];
+
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
     Location *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %+.8f/%+.8f",[[(CLSAppDelegate *)[[UIApplication sharedApplication] delegate] dateFormatter] stringFromDate:location.timestamp], location.latitude, location.longitude];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %+.8f/%+.8f (%.0fm/%0.f)",[appDelegate.dateFormatter stringFromDate:location.timestamp], location.latitude, location.longitude,[appDelegate.lastLocation distanceFromLocation:[[[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude] autorelease]],location.horizontalAccuracy];
     
     
 }

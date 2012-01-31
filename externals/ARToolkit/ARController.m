@@ -90,6 +90,13 @@
 }
 
 - (void) dismissModalARControllerAnimated:(BOOL) animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];	
+
+    [self.accelerometer setDelegate:nil];
+    [self setAccelerometer:nil];
+    [self.locationManager setDelegate:nil];
+    [self setLocationManager:nil];
 	[self.rootController dismissModalViewControllerAnimated:animated];
 	self.rootController.view = self.originalView;
 }

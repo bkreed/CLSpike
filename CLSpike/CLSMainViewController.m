@@ -13,10 +13,10 @@
 #import "CLSAppDelegate.h"
 
 //If it's less than this far away, don't try to show it in the AR view
-#define kMinDistance 25
+#define kMinDistance 5
 
 //If it's less sure than this, don't try to show it in the ArView
-#define kMinAccuracy 25
+#define kMinAccuracy 150
 
 @implementation CLSMainViewController
 
@@ -91,12 +91,12 @@
         
     //for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
     NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
-    [locFetcher setFetchLimit:20];
+    [locFetcher setFetchLimit:30];
     for (Location *loc in [Location executeFetchRequest:locFetcher]) {
         CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
         if (([appDelegate.lastLocation distanceFromLocation:fetchedLocation] > kMinDistance) && 
             (loc.horizontalAccuracy < kMinAccuracy)) {
-            ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:fetchedLocation andTitle:[appDelegate.dateFormatter stringFromDate:loc.timestamp]];
+            ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:fetchedLocation andTitle: [appDelegate.dateFormatter stringFromDate:loc.timestamp]];
 
             [self.arController addCoordinate:tempCoordinate animated:NO];
             [tempCoordinate release];
