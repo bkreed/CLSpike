@@ -14,7 +14,9 @@
 
 @synthesize delegate = _delegate;
 @synthesize tableView = _tableView;
+@synthesize mapView = _mapView;
 @synthesize fetchedResultsController = __fetchedResultsController;
+@synthesize segmentedControl = _segmentedControl;
 
 - (void)didReceiveMemoryWarning
 {
@@ -28,11 +30,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.segmentedControl.selectedSegmentIndex=0;
+    [self.tableView setHidden:NO];
+    [self.mapView setHidden:YES];
 }
 
 - (void)viewDidUnload
 {
     [self setTableView:nil];
+    [self setMapView:nil];
+    [self setSegmentedControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -45,7 +52,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidAppear:animated];    
+    //for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
+    NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
+    [locFetcher setFetchLimit:100];
+    for (Location *loc in [Location executeFetchRequest:locFetcher]) {
+        CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
+        [self.mapView addAnnotation:(id<MKAnnotation>) fetchedLocation];
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -276,9 +291,28 @@
     
 }
 
+
+/*
+ This method swaps the visibility of the map view and the table of region events.
+ The "add region" button in the navigation bar is also altered to only be enabled when the map is shown.
+ */
+- (IBAction)switchViews: (id) sender {
+	// Swap the hidden status of the map and table view so that the appropriate one is now showing.
+	self.mapView.hidden = !self.mapView.hidden;
+	self.tableView.hidden = !self.tableView.hidden;
+		
+	// Reload the table data and update the icon badge number when the table view is shown.
+	if (!self.tableView.hidden) {
+		[self.tableView reloadData];
+	}
+}
+
+
 -(void) dealloc {
     [_tableView release];
     [__fetchedResultsController release];
+    [_mapView release];
+    [_segmentedControl release];
     [super dealloc];
 }
 

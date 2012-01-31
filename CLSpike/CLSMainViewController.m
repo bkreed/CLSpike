@@ -91,7 +91,7 @@
         
     //for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
     NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
-    [locFetcher setFetchLimit:25];
+    [locFetcher setFetchLimit:20];
     for (Location *loc in [Location executeFetchRequest:locFetcher]) {
         CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
         if (([appDelegate.lastLocation distanceFromLocation:fetchedLocation] > kMinDistance) && 

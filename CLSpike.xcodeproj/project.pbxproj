@@ -28,6 +28,7 @@
 		D312957514D738BA0096BE31 /* ARMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D312957114D738BA0096BE31 /* ARMarker.m */; };
 		D312957814D739D30096BE31 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = D312957714D739D30096BE31 /* point.png */; };
 		D312958414D77FDC0096BE31 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D312958314D77FDC0096BE31 /* Location.m */; };
+		D33A5B8D14D79824005168B8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33A5B8C14D79824005168B8 /* MapKit.framework */; };
 		D3B0572214D702A1004A1FD4 /* LocationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3B0572014D702A1004A1FD4 /* LocationModel.xcdatamodeld */; };
 		D3E097E514BF5F5F0088D67F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E414BF5F5F0088D67F /* UIKit.framework */; };
 		D3E097E714BF5F5F0088D67F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E097E614BF5F5F0088D67F /* Foundation.framework */; };
@@ -92,6 +93,7 @@
 		D312958214D77FDC0096BE31 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		D312958314D77FDC0096BE31 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		D312958514D784690096BE31 /* LocationModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocationModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		D33A5B8C14D79824005168B8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D3B0572114D702A1004A1FD4 /* LocationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationModel.xcdatamodel; sourceTree = "<group>"; };
 		D3E097E014BF5F5F0088D67F /* CLSpike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLSpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E097E414BF5F5F0088D67F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -129,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33A5B8D14D79824005168B8 /* MapKit.framework in Frameworks */,
 				D31294A414D70E230096BE31 /* CoreData.framework in Frameworks */,
 				D3E098B914C4D5130088D67F /* CoreLocation.framework in Frameworks */,
 				D3E097E514BF5F5F0088D67F /* UIKit.framework in Frameworks */,
@@ -227,6 +230,7 @@
 		D3E097E314BF5F5F0088D67F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D33A5B8C14D79824005168B8 /* MapKit.framework */,
 				D31294A314D70E230096BE31 /* CoreData.framework */,
 				D3E098B814C4D5130088D67F /* CoreLocation.framework */,
 				D3E097E414BF5F5F0088D67F /* UIKit.framework */,
