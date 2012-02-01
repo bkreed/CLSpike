@@ -18,6 +18,9 @@
 
 #import "Location.h"
 
+#define kRequiredAccuracy 100
+#define kRequiredRecency  -300
+
 @implementation CLSAppDelegate
 
 @synthesize window = _window;
@@ -191,6 +194,22 @@
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    
+    if (newLocation ==nil) {
+        return;
+    }
+    
+    if (newLocation.horizontalAccuracy > kRequiredAccuracy) {
+        //too fuzzy - skip it
+        return;
+    }
+    
+    NSDate *dateThreshold=[NSDate dateWithTimeIntervalSinceNow:kRequiredRecency];
+    NSDate *locationsDate = [newLocation timestamp];
+    if ([dateThreshold compare:locationsDate]==NSOrderedDescending) {
+        //Too old - skip it
+        return;
+    }
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 

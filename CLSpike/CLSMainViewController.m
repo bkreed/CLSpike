@@ -89,18 +89,19 @@
     
     CLSAppDelegate *appDelegate = (CLSAppDelegate *)[[UIApplication sharedApplication] delegate];
         
-    //for (Location *loc in [Location findAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]]) {
-    NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
+    NSPredicate *closeFilter = [NSPredicate predicateWithFormat:@"horizontalAccuracy < %d",kMinAccuracy];
+
+    NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" 
+                                                    ascending:NO 
+                                                    withPredicate:closeFilter
+                                                    inContext:[NSManagedObjectContext contextForCurrentThread]];
     [locFetcher setFetchLimit:30];
     for (Location *loc in [Location executeFetchRequest:locFetcher]) {
         CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
-        if (([appDelegate.lastLocation distanceFromLocation:fetchedLocation] > kMinDistance) && 
-            (loc.horizontalAccuracy < kMinAccuracy)) {
-            ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:fetchedLocation andTitle: [appDelegate.dateFormatter stringFromDate:loc.timestamp]];
+        ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:fetchedLocation andTitle: [appDelegate.dateFormatter stringFromDate:loc.timestamp]];
 
-            [self.arController addCoordinate:tempCoordinate animated:NO];
-            [tempCoordinate release];
-        }
+        [self.arController addCoordinate:tempCoordinate animated:NO];
+        [tempCoordinate release];
 
     }
     
