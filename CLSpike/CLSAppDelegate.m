@@ -18,7 +18,7 @@
 
 #import "Location.h"
 
-#define kRequiredAccuracy 100
+#define kRequiredAccuracy 1000
 #define kRequiredRecency  -300
 
 @implementation CLSAppDelegate
@@ -84,34 +84,41 @@
     
     [self.dateFormatter setDateFormat:@"M/dd hh:mma"];
     
-    if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
-        // Get all regions being monitored for this application.
-        NSArray *regions = [[[self.locationManager monitoredRegions] allObjects] copy];
-        
-        // Iterate through the regions and clean them up.
-        for (int i = 0; i < [regions count]; i++) {
-            CLRegion *region = [regions objectAtIndex:i];
-            [self.locationManager stopMonitoringForRegion:region];
-        }
-        [regions release];
-        //Now add our current region
-	}
-	else {
-		JUCHE(JERROR,@"Significant location change monitoring is not available.");
-	}
-    
-    [self.locationManager performSelectorOnMainThread:@selector(startUpdatingLocation) withObject:nil waitUntilDone:YES];
-
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
     
     NSTimeInterval secondsSinceEpoch=[[NSDate date] timeIntervalSince1970];
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",secondsSinceEpoch] ,@"timestamp", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
-    if ([CLLocationManager locationServicesEnabled]) {
-        JUCHE_LOG_DICT(JINFO, tempDict, @"Successfully registered for location services"); 
+    
+    if ([CLLocationManager authorizationStatus]!=kCLAuthorizationStatusDenied && [CLLocationManager authorizationStatus]!=kCLAuthorizationStatusRestricted) {
+        if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+            // Get all regions being monitored for this application.
+            NSArray *regions = [[[self.locationManager monitoredRegions] allObjects] copy];
+            
+            // Iterate through the regions and clean them up.
+            for (int i = 0; i < [regions count]; i++) {
+                CLRegion *region = [regions objectAtIndex:i];
+                [self.locationManager stopMonitoringForRegion:region];
+            }
+            [regions release];
+            //Now add our current region
+        }
+        else {
+            JUCHE(JERROR,@"Significant location change monitoring is not available.");
+        }
+        
+        [self.locationManager performSelectorOnMainThread:@selector(startUpdatingLocation) withObject:nil waitUntilDone:YES];
+        
+        if ([CLLocationManager locationServicesEnabled]) {
+            JUCHE_LOG_DICT(JINFO, tempDict, @"Successfully registered for location services"); 
+        } else {
+            JUCHE_LOG_DICT(JERROR, tempDict, @"Could not register for location services"); 
+        }
+
     } else {
-        JUCHE_LOG_DICT(JERROR, tempDict, @"Could not register for location services"); 
+        JUCHE(JERROR,@"Location change monitoring is not authorized.");
     }
+
     NSLog(@"ending performLaunchSetup");
 
     [pool drain];
@@ -134,14 +141,18 @@
      */
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 	
-	if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
-		// Stop normal location updates and start significant location change updates for battery efficiency.
-		[self.locationManager stopUpdatingLocation];
-		[self.locationManager startMonitoringSignificantLocationChanges];
-	}
-	else {
-		JUCHE(JERROR,@"Significant location change monitoring is not available.");
-	}
+    if ([CLLocationManager authorizationStatus]!=kCLAuthorizationStatusDenied && [CLLocationManager authorizationStatus]!=kCLAuthorizationStatusRestricted) {
+        if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+            // Stop normal location updates and start significant location change updates for battery efficiency.
+            [self.locationManager stopUpdatingLocation];
+            [self.locationManager startMonitoringSignificantLocationChanges];
+        }
+        else {
+            JUCHE(JERROR,@"Significant location change monitoring is not available.");
+        }
+    } else {
+        JUCHE(JERROR,@"Location change monitoring is not authorized.");
+    }
 
 }
 
@@ -157,14 +168,18 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
-		// Stop significant location updates and start normal location updates again since the app is in the forefront.
-		[self.locationManager stopMonitoringSignificantLocationChanges];
-		[self.locationManager startUpdatingLocation];
-	}
-	else {
-		JUCHE(JERROR, @"Significant location change monitoring is not available.");
-	}
+    if ([CLLocationManager authorizationStatus]!=kCLAuthorizationStatusDenied && [CLLocationManager authorizationStatus]!=kCLAuthorizationStatusRestricted) {
+        if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+            // Stop significant location updates and start normal location updates again since the app is in the forefront.
+            [self.locationManager stopMonitoringSignificantLocationChanges];
+            [self.locationManager startUpdatingLocation];
+        }
+        else {
+            JUCHE(JERROR, @"Significant location change monitoring is not available.");
+        }
+    } else {
+        JUCHE(JERROR,@"Location change monitoring is not authorized.");
+    }
 
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
