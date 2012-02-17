@@ -119,6 +119,8 @@
         JUCHE(JERROR,@"Location change monitoring is not authorized.");
     }
 
+    tempDict=nil;
+    
     NSLog(@"ending performLaunchSetup");
 
     [pool drain];
@@ -214,6 +216,11 @@
         return;
     }
     
+    CLLocationCoordinate2D coord = [newLocation coordinate];
+    
+    NSLog(@"lat is %f",coord.latitude);
+    NSLog(@"long is %f",coord.longitude);
+    
     if (newLocation.horizontalAccuracy > kRequiredAccuracy) {
         //too fuzzy - skip it
         return;
@@ -242,15 +249,15 @@
     [self addRegionAroundLocation:newLocation];
     [self.locationManager stopUpdatingLocation];
     Location *newLocationObject = [Location createInContext:[NSManagedObjectContext contextForCurrentThread]];
-    [newLocationObject setLatitude:newLocation.coordinate.latitude];
-    [newLocationObject setLongitude:newLocation.coordinate.longitude];
+    [newLocationObject setLatitude:[NSNumber numberWithDouble:newLocation.coordinate.latitude]];
+    [newLocationObject setLongitude:[NSNumber numberWithDouble:newLocation.coordinate.longitude]];
     [newLocationObject setTimestamp:[NSDate date]];
-    [newLocationObject setBattery_status:[[UIDevice currentDevice] batteryLevel]];
-    [newLocationObject setSpeed:newLocation.speed];
-    [newLocationObject setCourse:newLocation.course];
-    [newLocationObject setHorizontalAccuracy:newLocation.horizontalAccuracy];
-    [newLocationObject setVerticalAccuracy:newLocation.verticalAccuracy];
-    [newLocationObject setAltitude:newLocation.altitude];
+    [newLocationObject setBattery_status:[NSNumber numberWithFloat:[[UIDevice currentDevice] batteryLevel]]];
+    [newLocationObject setSpeed:[NSNumber numberWithDouble:newLocation.speed]];
+    [newLocationObject setCourse:[NSNumber numberWithDouble:newLocation.course]];
+    [newLocationObject setHorizontalAccuracy:[NSNumber numberWithDouble:newLocation.horizontalAccuracy]];
+    [newLocationObject setVerticalAccuracy:[NSNumber numberWithDouble:newLocation.verticalAccuracy]];
+    [newLocationObject setAltitude:[NSNumber numberWithDouble:newLocation.altitude]];
     NSError *error=nil;
     if (![[NSManagedObjectContext contextForCurrentThread] save:&error]) {
         NSLog(@"Error saving: %@",[error description]);

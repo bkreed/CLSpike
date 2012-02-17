@@ -2,7 +2,7 @@
 //  Location.h
 //  CLSpike
 //
-//  Created by Carl Brown on 1/30/12.
+//  Created by Carl Brown on 2/17/12.
 //  Copyright (c) 2012 PDAgent, LLC. All rights reserved.
 //
 
@@ -12,14 +12,14 @@
 
 @interface Location : NSManagedObject
 
-@property (nonatomic) float battery_status;
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
-@property (nonatomic, retain) NSDate *timestamp;
-@property (nonatomic) double altitude;
-@property (nonatomic) double course;
-@property (nonatomic) double speed;
-@property (nonatomic) double horizontalAccuracy;
-@property (nonatomic) double verticalAccuracy;
+@property (nonatomic, retain) NSNumber * altitude;
+@property (nonatomic, retain) NSNumber * battery_status;
+@property (nonatomic, retain) NSNumber * course;
+@property (nonatomic, retain) NSNumber * horizontalAccuracy;
+@property (nonatomic, retain) NSNumber * latitude;
+@property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * speed;
+@property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSNumber * verticalAccuracy;
 
 @end

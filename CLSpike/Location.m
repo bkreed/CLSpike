@@ -2,7 +2,7 @@
 //  Location.m
 //  CLSpike
 //
-//  Created by Carl Brown on 1/30/12.
+//  Created by Carl Brown on 2/17/12.
 //  Copyright (c) 2012 PDAgent, LLC. All rights reserved.
 //
 
@@ -11,14 +11,14 @@
 
 @implementation Location
 
+@dynamic altitude;
 @dynamic battery_status;
+@dynamic course;
+@dynamic horizontalAccuracy;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic timestamp;
-@dynamic altitude;
-@dynamic course;
 @dynamic speed;
-@dynamic horizontalAccuracy;
+@dynamic timestamp;
 @dynamic verticalAccuracy;
 
 @end

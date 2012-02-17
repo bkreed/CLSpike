@@ -57,7 +57,7 @@
     NSFetchRequest *locFetcher = [Location requestAllSortedBy:@"timestamp" ascending:NO inContext:[NSManagedObjectContext contextForCurrentThread]];
     [locFetcher setFetchLimit:50];
     for (Location *loc in [Location executeFetchRequest:locFetcher]) {
-        CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
+        CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:[loc.latitude doubleValue] longitude:[loc.longitude doubleValue]] autorelease];
         [self.mapView addAnnotation:(id<MKAnnotation>) fetchedLocation];
     }
 
@@ -271,7 +271,7 @@
 {
     CLSAppDelegate *appDelegate = (CLSAppDelegate *)[[UIApplication sharedApplication] delegate];
     Location *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *cellText = [NSString stringWithFormat:@"%@: %+.8f/%+.8f (%.0fm/%0.f)",[appDelegate.dateFormatter stringFromDate:location.timestamp], location.latitude, location.longitude,[appDelegate.lastLocation distanceFromLocation:[[[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude] autorelease]],location.horizontalAccuracy];
+    NSString *cellText = [NSString stringWithFormat:@"%@: %+.8f/%+.8f (%.0fm/%0.f)",[appDelegate.dateFormatter stringFromDate:location.timestamp], location.latitude, location.longitude,[appDelegate.lastLocation distanceFromLocation:[[[CLLocation alloc] initWithLatitude:[location.latitude doubleValue] longitude:[location.longitude doubleValue]] autorelease]],location.horizontalAccuracy];
     
     UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
     CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
@@ -290,7 +290,7 @@
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
     Location *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %+.8f/%+.8f (%.0fm/%0.f)",[appDelegate.dateFormatter stringFromDate:location.timestamp], location.latitude, location.longitude,[appDelegate.lastLocation distanceFromLocation:[[[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude] autorelease]],location.horizontalAccuracy];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %+.8f/%+.8f (%.0fm/%0.f)",[appDelegate.dateFormatter stringFromDate:location.timestamp], location.latitude, location.longitude,[appDelegate.lastLocation distanceFromLocation:[[[CLLocation alloc]initWithLatitude:[location.latitude doubleValue] longitude:[location.longitude doubleValue]] autorelease]],location.horizontalAccuracy];
     
     
 }

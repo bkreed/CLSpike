@@ -97,7 +97,7 @@
                                                     inContext:[NSManagedObjectContext contextForCurrentThread]];
     [locFetcher setFetchLimit:30];
     for (Location *loc in [Location executeFetchRequest:locFetcher]) {
-        CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:loc.latitude longitude:loc.longitude] autorelease];
+        CLLocation *fetchedLocation = [[[CLLocation alloc] initWithLatitude:[loc.latitude doubleValue] longitude:[loc.longitude doubleValue]] autorelease];
         ARGeoCoordinate *tempCoordinate = [[ARGeoCoordinate alloc] initWithCoordiante:fetchedLocation andTitle: [appDelegate.dateFormatter stringFromDate:loc.timestamp]];
 
         [self.arController addCoordinate:tempCoordinate animated:NO];
