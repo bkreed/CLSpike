@@ -72,7 +72,7 @@
     JUCHE_LOG_DICT(JINFO, tempDict, @"Application Launched!");
     NSLog(@"ending performLaunchLogging");
 
-    [pool drain];
+    [pool release];
 }
 
 -(void) performLaunchSetup { 
@@ -123,7 +123,7 @@
     
     NSLog(@"ending performLaunchSetup");
 
-    [pool drain];
+    [pool release];
 
 }
 
@@ -206,7 +206,7 @@
 
 	JUCHE(JERROR,@"didFailWithError: %@", [error description]);
     
-    [pool drain];
+    [pool release];
 }
 
 
@@ -263,7 +263,7 @@
         NSLog(@"Error saving: %@",[error description]);
     }
 
-    [pool drain];
+    [pool release];
 
 }
 
@@ -276,7 +276,7 @@
     NSDictionary *tempDict= [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] ,@"timestamp", [NSString stringWithFormat:@"%+.8f",region.center.latitude], @"latitude", [NSString stringWithFormat:@"%+.8f",region.center.longitude], @"longitude", [NSString stringWithFormat:@"%.2f", [[UIDevice currentDevice] batteryLevel]], @"battery_level", nil];
 
     JUCHE_LOG_DICT(JINFO, tempDict,@"didEnterRegion: %@", event);
-    [pool drain];
+    [pool release];
 
 }
 
@@ -292,7 +292,7 @@
 
     [self.locationManager startUpdatingLocation];
     [self.locationManager stopMonitoringForRegion:region];
-    [pool drain];
+    [pool release];
 
 }
 
@@ -302,7 +302,7 @@
 
 	NSString *event = [NSString stringWithFormat:@"monitoringDidFailForRegion %@: %@", region.identifier, error];
     JUCHE(JERROR,@"monitoringDidFailForRegion: %@", event);
-    [pool drain];
+    [pool release];
 
 
 }
@@ -330,7 +330,7 @@
 	else {
 		NSLog(@"Region monitoring is not available.");
 	}
-    [pool drain];
+    [pool release];
 
 }
 

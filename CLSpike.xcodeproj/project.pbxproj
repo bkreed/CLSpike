@@ -104,7 +104,7 @@
 		D3E097F014BF5F5F0088D67F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3E097F214BF5F5F0088D67F /* CLSpike-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLSpike-Prefix.pch"; sourceTree = "<group>"; };
 		D3E097F314BF5F5F0088D67F /* CLSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLSAppDelegate.h; sourceTree = "<group>"; };
-		D3E097F414BF5F5F0088D67F /* CLSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLSAppDelegate.m; sourceTree = "<group>"; };
+		D3E097F414BF5F5F0088D67F /* CLSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CLSAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D3E097F614BF5F5F0088D67F /* CLSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLSMainViewController.h; sourceTree = "<group>"; };
 		D3E097F714BF5F5F0088D67F /* CLSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLSMainViewController.m; sourceTree = "<group>"; };
 		D3E097F914BF5F5F0088D67F /* CLSFlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLSFlipsideViewController.h; sourceTree = "<group>"; };
